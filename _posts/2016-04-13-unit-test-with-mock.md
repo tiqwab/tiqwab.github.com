@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "JavaのテストにおけるMock使用例 ~Spring, Camelを添えて~"
+title:  "JavaのテストにおけるMock使用例 with Spring and Camel"
 tags: "java, test, mock, stub, spring-framework, apache-camel"
 ---
 
@@ -267,6 +267,12 @@ public class MockSpringTest {
 }
 {% endhighlight %}
 
+### 使用したサンプルのリポジトリ
+
+- [mochito-example][8]
+- [spring-mock-example][9]
+- [camel-mock-example][10]
+
 [1]:http://d.hatena.ne.jp/devbankh/201002
 [2]:http://qiita.com/mstssk/items/98e597c13f12746c907d
 [3]:http://www.amazon.co.jp/JUnit%E5%AE%9F%E8%B7%B5%E5%85%A5%E9%96%80-~%E4%BD%93%E7%B3%BB%E7%9A%84%E3%81%AB%E5%AD%A6%E3%81%B6%E3%83%A6%E3%83%8B%E3%83%83%E3%83%88%E3%83%86%E3%82%B9%E3%83%88%E3%81%AE%E6%8A%80%E6%B3%95-WEB-PRESS-plus/dp/477415377X
@@ -274,3 +280,6 @@ public class MockSpringTest {
 [5]:http://qiita.com/daikuro/items/5e22c78c0342fde04b87
 [6]:http://camel.apache.org/cdi-testing.html
 [7]:http://qiita.com/daikuro/items/2b9e495ae61a612f1375
+[8]:https://github.com/tiqwab/example/tree/master/mockito-example
+[9]:https://github.com/tiqwab/example/tree/master/spring-mock-example
+[10]:https://github.com/tiqwab/example/tree/master/camel-mock-example
