@@ -12,12 +12,11 @@ description: > # this means to ignore newlines until "baseurl:"
   Topics, articles, and memos related to programming written by tiqwab.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://tiqwab.github.io" # the base hostname & protocol for your site
-# twitter_username: jekyllrb
+twitter_username: tiqwab 
 github_username:  tiqwab
 
 # Build settings
 markdown: kramdown
-kramdown: 
+kramdown:
   input: GFM
 highlighter: rouge
-
