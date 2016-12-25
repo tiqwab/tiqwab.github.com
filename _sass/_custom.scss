@@ -1,0 +1,17 @@
+/* Syntax highlighting */
+$bg-color: #fdf6e3;
+
+.highlight {
+  background: $bg-color;
+  color: #586e75;
+
+  .highlighter-rouge & {
+    background: $bg-color;
+    color: #586e75;
+  }
+}
+
+pre, code {
+  background-color: $bg-color;
+  color: #586e75;
+}
