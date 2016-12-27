@@ -2,6 +2,7 @@
 layout: post
 title:  "JavaScript学び　-開発ツール関連-"
 tags: "javascript, node, npm, eslint, babel, webpack"
+comments: true
 ---
 
 JavaScript界隈の知識があまり無かったのでまとめてみるその1。ここではよく聞く開発ツールのインストールや使用法について確認する。

@@ -2,6 +2,7 @@
 layout: post
 title:  "HaskellでAIZU ONLINE JUDGE Part2"
 tags: "haskell, aizu"
+comments: true
 ---
 
 引き続きHaskellに慣れるために[AIZU ONLINE JUDGE][1]やってみます。「Introduction to Algorithms and Data Structures」を対象にします。詰まったところや知らなかった関数などをメモします。

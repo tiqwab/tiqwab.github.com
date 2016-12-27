@@ -2,6 +2,7 @@
 layout: post
 title:  "Chef入門"
 tags: "chef"
+comments: true
 ---
 
 Vagrantでのprovisionerとしての使用を想定しつつ、Chefの基本的な操作を[チュートリアル][1]に従って確認。また、公式のドキュメントを流し見して、全体の概要をまとめてみる。

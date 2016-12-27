@@ -2,6 +2,7 @@
 layout: post
 title:  "JavaのテストにおけるMock使用例 with Spring and Camel"
 tags: "java, test, mock, stub, spring-framework, apache-camel"
+comments: true
 ---
 
 業務ではJavaを使用した開発が多いが、単体テストを書いていてMockやStubといったものを使用したことがないことに気がついたため、その使用例をまとめてみる。  
@@ -261,7 +262,7 @@ public class MockSpringTest {
     MockEndpoint mockNextEndpoint;
     @EndpointInject(uri="mock:direct:prev")
     MockEndpoint mockPrevEndpoint;
-   
+
     ...
 
 }

@@ -2,6 +2,7 @@
 layout: post
 title:  "GradleによるJavaプロジェクトのビルド"
 tags: "java, gradle"
+comments: true
 ---
 
 JavaプロジェクトのビルドツールであるGradleの使用方法の確認として、階層型マルチプロジェクト構成を持ち、ビルドにより各モジュール起動用のスクリプトファイルが作成されるというものを作成してみることにした。IDEとしてはEclipseを使用する。

@@ -2,6 +2,7 @@
 layout: post
 title:  "Splay Tree"
 tags: "python, algorithm, splay tree"
+comments: true
 ---
 
 splay treeに触れる機会があったので、自身の理解のためにまとめをば。

@@ -2,6 +2,7 @@
 layout: post
 title:  "Haskellで数独solver"
 tags: "haskell"
+comments: true
 ---
 
 Haskellの練習がてら数独solverを作成しました。  

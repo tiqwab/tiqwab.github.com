@@ -2,6 +2,7 @@
 layout: post
 title:  "VagrantとChef連携"
 tags: "vagrant, chef"
+comments: true
 ---
 
 VagrantとChefを連携して使用するための手順をまとめる。

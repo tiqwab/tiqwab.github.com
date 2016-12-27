@@ -2,6 +2,7 @@
 layout: post
 title:  "Microsoft Azure体験"
 tags: "azure, raspberrypi, iot, d3"
+comments: true
 ---
 
 先日ふとMicrosoft Azureを試してみようと思い1ヶ月の無料サブスクリプション期間内で色々遊んでみました。クラウドを触るのは初めてでしたが、こういった自分で好きに使える環境があるのは便利で今後も使用することがありそうなので、この1か月間で行ったことを備忘録がてらメモしておこうと思います。  

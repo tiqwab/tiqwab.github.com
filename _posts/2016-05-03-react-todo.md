@@ -2,6 +2,7 @@
 layout: post
 title:  "Thinking in Reactに従いながらTODOアプリ作成"
 tags: "javascript, react"
+comments: true
 ---
 
 JavaScriptのライブラリ、Reactの試し書き。Reactを使用したWebアプリの実装手順を整理したいため、React公式のdocumentation, [Thinking in React][1]を参考にしながら、TODOアプリを作成してみる。

@@ -2,6 +2,7 @@
 layout: post
 title:  "Vagrant入門"
 tags: "vagrant"
+comments: true
 ---
 
 仮想マシンを手軽に作成、管理するためにVagrantを使用してみる。

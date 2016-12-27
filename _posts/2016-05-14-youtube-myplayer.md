@@ -2,6 +2,7 @@
 layout: post
 title:  "自分用の簡易YouTube Playerを作る"
 tags: "javascript, react"
+comments: true
 ---
 
 YouTubeをいわゆる「作業用BGM」として使用することが多々あるが、幾つかの短い動画をリピート再生したいというときに手動で操作するのも、かといってログインしてプレイリストを作ってどうこうするのも面倒だなと感じていた。ということで以下のような最低限の機能を持つ自分用のYouTube Playerを作成してみることにした。
