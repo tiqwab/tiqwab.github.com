@@ -2,6 +2,7 @@
 layout: post
 title:  "「コンパイラ」読書メモ"
 tags: "compiler"
+comments: true
 ---
 
 少し前からHaskellのparsecというパッケージを触っていたのですが、それに触発されて[コンパイラ][10]という本を読み始めました。
