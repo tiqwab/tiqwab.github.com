@@ -83,7 +83,7 @@ if __name__ == '__main__':
             FSMRule(2, 'b', 3),
             FSMRule(3, 'a', 3),
             FSMRule(3, 'b', 3),
-            k
+            )
     dfa = DFA(1, transition_rules, {3})
     assert dfa.does_accept('ab') == True
     assert dfa.does_accept('ababaab') == True
