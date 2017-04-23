@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 「Spring Boot ハンズオン」 と戯れる
+title: Spring Boot ハンズオンと学ぶ 1
 tags: "spring boot, java"
 comments: true
 ---
