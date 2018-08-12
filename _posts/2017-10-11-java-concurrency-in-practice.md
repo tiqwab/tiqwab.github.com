@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 『Java 並行処理プログラミング読書』メモ
+title: 『Java 並行処理プログラミング』読書メモ
 tags: "concurrency, book, java"
 comments: true
 ---
