@@ -25,7 +25,7 @@ systemd 251 (251.6-2-arch)
 - 機密情報であることがわかりにくい
 - 子プロセスに伝搬する
 
-(ただ一番目については具体的に何を指しているかはわからない。[ある StackOverflow の回答][3] では、systemd がサービス開始時に設定を D-Bus にブロードキャストはするが、環境変数自体を流すような仕組みがあるわけではないとしている。)
+(ただ一番目については具体的に何を指しているかはわからない。[ある StackOverflow の回答][3] では、systemd がサービス開始時に設定を D-Bus にブロードキャストはするが、環境変数自体を流すような仕組みがあるわけではないとしている。-> [追記1](#d-bus))
 
 こうした方法に代わり、systemd v250 からはサービスにクレデンシャルを安全に渡すための方法として `LoadCredentialEncrypted` や `SetCredentialEncrypted` ディレクティブを使用することができます。`LoadCredentialEncrypted` は予めクレデンシャルを暗号化したファイルを用意しそのパスを指定、サービス起動時に復号したファイルとして渡すという動きをします。`SetCredentialEncrypted` も似ていますが、こちらには暗号化したファイルのパスではなく暗号化した文字列を直接指定します。
 
@@ -115,6 +115,82 @@ dr-x------ 2 run-u316 root 0 Nov  3 18:03 run-u316.service
 
 - [Credentials - systemd.io][1]
 - [The magic of systemd-creds - smallstep.com][2]
+
+---
+
+<div id="d-bus" />
+
+#### 追記1: D-Bus によるサービス定義の取得
+
+ここでの疑問に対してコメントを頂けたので少しこの点について自分でも確認してみました。
+
+> これは systemctl show などでunitの属性をみるとEnvironment=の定義が見えることを言っていると思います
+
+`SYSTEMD_LOG_LEVEL=debug` 環境変数付きで `systemctl show` を実行したデバッグログ例:
+
+```
+# my-sample は確認のために用意したサービス
+$ SYSTEMD_LOG_LEVEL=debug systemctl show my-sample
+
+running_in_chroot(): Permission denied
+Bus n/a: changing state UNSET → OPENING
+sd-bus: starting bus by connecting to /run/dbus/system_bus_socket...
+Bus n/a: changing state OPENING → AUTHENTICATING
+Successfully forked off '(pager)' as PID 151302.
+Skipping PR_SET_MM, as we don't have privileges.
+Found cgroup2 on /sys/fs/cgroup/, full unified hierarchy
+Failed to execute 'pager', using next fallback pager: No such file or directory
+Pager executable is "less", options "FRSXMK", quit_on_interrupt: yes
+Showing one /org/freedesktop/systemd1/unit/my_2dsample_2eservice
+Bus n/a: changing state AUTHENTICATING → HELLO
+Sent message type=method_call sender=n/a destination=org.freedesktop.DBus path=/org/freedesktop/DBus interface=org.freedesktop.DBus member=Hello cookie=1 reply_cookie=0 signature=n/a error-name=n/a error-message=n/a
+Got message type=method_return sender=org.freedesktop.DBus destination=:1.3284 path=n/a interface=n/a member=n/a cookie=1 reply_cookie=1 signature=s error-name=n/a error-message=n/a
+Bus n/a: changing state HELLO → RUNNING
+Sent message type=method_call sender=n/a destination=org.freedesktop.systemd1 path=/org/freedesktop/systemd1/unit/my_2dsample_2eservice interface=org.freedesktop.DBus.Properties member=GetAll cookie=2 reply_cookie=0 signature=s error-name=n/a error-message=n/a
+Got message type=method_return sender=:1.2 destination=:1.3284 path=n/a interface=n/a member=n/a cookie=27878 reply_cookie=2 signature=a{sv} error-name=n/a error-message=n/a
+
+... (以下通常通りユニットの設定出力)
+Environment=foo=bar
+```
+
+この中で以下のログからサービスの情報取得のために D-Bus が利用されていること、また送信メッセージの詳細がわかります (可読性のために整形済)。
+
+```
+Sent message
+  type=method_call
+  sender=n/a
+  destination=org.freedesktop.systemd1
+  path=/org/freedesktop/systemd1/unit/my_2dsample_2eservice
+  interface=org.freedesktop.DBus.Properties member=GetAll
+  cookie=2
+  reply_cookie=0
+  signature=s
+  error-name=n/a
+  error-message=n/a
+```
+
+これを踏まえて自分で `dbus-send` してみると `systemctl show` と同様な情報が取得できます。
+
+```bash
+$ dbus-send --print-reply --system \
+    --dest=org.freedesktop.systemd1 \
+    /org/freedesktop/systemd1/unit/my_2dsample_2eservice \
+    --type=method_call \
+    org.freedesktop.DBus.Properties.GetAll \
+    string:
+
+method return time=1668239124.727145 sender=:1.2 -> destination=:1.3368 serial=28854 reply_serial=2
+   array [
+     ...
+      dict entry(
+         string "Environment"
+         variant             array [
+               string "foo=bar"
+            ]
+      )
+      ...
+   ]
+```
 
 [1]: https://systemd.io/CREDENTIALS/
 [2]: https://smallstep.com/blog/systemd-creds-hardware-protected-secrets/
