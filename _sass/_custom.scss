@@ -17,7 +17,7 @@ pre, code {
 }
 
 hr {
-  margin-bottom: $spacing-unit / 2;
+  margin-bottom: calc($spacing-unit / 2);
   color: #fff;
 }
 
@@ -35,7 +35,7 @@ figure figcaption {
 
 table {
   padding: 0;
-  margin-bottom: $spacing-unit / 2; }
+  margin-bottom: calc($spacing-unit / 2); }
   table tr {
     border-top: 1px solid #cccccc;
     background-color: white;
